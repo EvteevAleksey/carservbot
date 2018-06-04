@@ -6,10 +6,10 @@ import createdb
 TOKEN = config.token
 bot = telebot.TeleBot(TOKEN)
 createdb.createtables()
-DB = DB.DBLayer(config.database)
+db = DB.DBLayer(config.database)
 @bot.message_handler(commands=['start'])
 def start(message):
-    current_state = DB.getstate(message.chat.id)
+    current_state = db.getState(message.chat.id)
     sent = bot.send_message(message.chat.id, 'Как тебя зовут?')
     bot.register_next_step_handler(sent, hello)
 
