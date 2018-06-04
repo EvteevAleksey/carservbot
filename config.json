@@ -1,0 +1,12 @@
+{
+  "db": {
+    "name": "auto_bot",
+    "ip": "127.0.0.1",
+    "login": "postgres",
+    "password": "123123",
+    "port": 5432
+  },
+  "telegram": {
+    "token": "529413272:AAGPFw8xASCkvhY-9rqhqtVAmIFaRnrb0go"
+  }
+}
