@@ -18,7 +18,7 @@ def hello(message):
 
 while True:
         try:
-            bot.polling(none_stop=True)
+            bot.polling(none_stop=True,interval=5)
         except Exception as e:
             print('Error occurred:')
             print(sys.stderr, str(e))
