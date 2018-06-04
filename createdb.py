@@ -15,19 +15,18 @@ def createtables():
     )
     cursor = connection.cursor()
 
-    cursor.execute('''CREATE SEQUENCE IF NOT EXIST public.chats_id_seq
-      INCREMENT 0
-      MINVALUE 0
-      MAXVALUE 0
-      START 0
-      CACHE 0;
-    ALTER TABLE public.chats_id_seq''')
-    connection.commit()
+   # cursor.execute('''CREATE SEQUENCE IF NOT EXISTS chats_id_seq
+   #   INCREMENT 0
+   #   MINVALUE 0
+   #   MAXVALUE 0
+   #   START 0
+   #   CACHE 0;''')
+   # connection.commit()
 
     cursor.execute('''
-       CREATE TABLE IF NOT EXIST chats
+       CREATE TABLE IF NOT EXISTS chats
 (
-  id bigint NOT NULL DEFAULT nextval('chats_id_seq'::regclass),
+  id bigint NOT NULL,
   uid bigint NOT NULL,
   state jsonb DEFAULT '{}'::jsonb,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
