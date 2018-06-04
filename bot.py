@@ -2,10 +2,11 @@ import telebot
 import sys
 import DB
 import config
+import createdb
 config = None
 TOKEN = config.token
 bot = telebot.TeleBot(TOKEN)
-
+createdb.createtables()
 DB = DB.DBLayer(config.database)
 @bot.message_handler(commands=['start'])
 def start(message):
