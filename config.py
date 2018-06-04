@@ -1,0 +1,2 @@
+token = '529413272:AAGPFw8xASCkvhY-9rqhqtVAmIFaRnrb0go'
+database ='postgres://tpbffxidbrulff:05111ed13b746e3cf456845be50715fa33368e7e3e31c7a3ceac8aa5050f9810@ec2-23-21-129-50.compute-1.amazonaws.com:5432/d14474p6mst3v3'
