@@ -23,16 +23,16 @@ def createtables():
    #   CACHE 0;''')
    # connection.commit()
 
+    cursor.execute('''DROP TABLE chats''')
+
     cursor.execute('''
        CREATE TABLE IF NOT EXISTS chats
 (
-  id bigint NOT NULL,
   uid bigint NOT NULL,
-  state jsonb DEFAULT '{}'::jsonb,
+  user_brand varchar(50),
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   updated_at timestamp with time zone NOT NULL DEFAULT now(),
-  CONSTRAINT chats_pkey PRIMARY KEY (id),
-  CONSTRAINT chats_uid_key UNIQUE (uid)
+  CONSTRAINT chats_uid_key PRIMARY KEY (uid)
 )''')
     connection.commit()
 
