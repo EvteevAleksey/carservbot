@@ -17,53 +17,49 @@ class DBLayer:
         self.cursor = self.connection.cursor()
 
     def getState(self, uid):
-        with self.cursor() as cursor:
-            cursor.execute("""
+        self.cursor.execute("""
                 SELECT state FROM chats WHERE uid = %s LIMIT 1
                 """, [uid])
 
-            if cursor.rowcount == 1:
-                state, = cursor.fetchone()
-                return state
-            else:
-                return {}
-        return None
+        if self.cursor.rowcount == 1:
+            state, = self.cursor.fetchone()
+            return state
+        else:
+            return {}
+
 
 
     def getUserBrand(self, uid):
-        with self.cursor() as cursor:
-            cursor.execute("""
+        self.cursor.execute("""
                 SELECT user_brand FROM chats WHERE uid = %s LIMIT 1
                 """, [uid])
 
-            if cursor.rowcount == 1:
-                state, = cursor.fetchone()
-                if state == 'null':
-                    return None
-                else:
-                    return state
-            else:
+        if self.cursor.rowcount == 1:
+            state, = self.cursor.fetchone()
+            if state == 'null':
                 return None
-        return None
+            else:
+                return state
+        else:
+            return None
+
 
 
     def getBrand(self, message):
-        with self.cursor() as cursor:
-            cursor.execute("""
+       self.cursor.execute("""
                 select Auto_name
                 from Brand, plainto_tsquery(%s) as query
                 where to_tsvector(Brand_name) @@ query = true
                 """, [message.lower()])
-            if cursor.rowcount == 1:
-                str, = cursor.fetchone()
-                return str
-            else:
-                return None
+       if self.cursor.rowcount == 1:
+            str, = self.cursor.fetchone()
+            return str
+       else:
+           return None
 
 
     def updateState(self, uid, new_state):
-        with self.cursor() as cursor:
-            cursor.execute("""
+        self.cursor.execute("""
                 INSERT INTO chats (uid) VALUES (%(uid)s)
                 ON CONFLICT (uid)
                 DO UPDATE
@@ -71,8 +67,7 @@ class DBLayer:
                 """, {'uid': uid})
 
     def updateBrand(self, uid, new_brand):
-        with self.cursor() as cursor:
-            cursor.execute("""
+        self.cursor.execute("""
                 INSERT INTO chats (uid, user_brand) VALUES (%(uid)s, %(new_brand)s)
                 ON CONFLICT (uid)
                 DO UPDATE
