@@ -1,9 +1,7 @@
 import telebot
 import sys
 import time
-from telebot import apihelper
 
-apihelper.proxy = {'http':'http://195.201.137.246:1080'}
 TOKEN = '529413272:AAGPFw8xASCkvhY-9rqhqtVAmIFaRnrb0go'
 bot = telebot.TeleBot(TOKEN)
 
@@ -21,4 +19,3 @@ while True:
         except Exception as e:
             print('Error occurred:')
             print(sys.stderr, str(e))
-            time.sleep(10)
