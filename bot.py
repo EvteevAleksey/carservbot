@@ -3,7 +3,6 @@ import sys
 import DB
 import config
 import createdb
-config = None
 TOKEN = config.token
 bot = telebot.TeleBot(TOKEN)
 createdb.createtables()
