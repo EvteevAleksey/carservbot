@@ -36,4 +36,14 @@ def createtables():
 )''')
     connection.commit()
 
+    cursor.execute('''
+           CREATE TABLE IF NOT EXISTS Brand
+    (
+      id bigint NOT NULL,
+      Auto_name varchar(50),
+      Brand_name varchar(50),
+      CONSTRAINT brand_pkey PRIMARY KEY (id)
+    )''')
+    connection.commit()
+
     connection.close()
