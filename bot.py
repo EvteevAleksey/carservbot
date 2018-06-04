@@ -8,7 +8,7 @@ bot = telebot.TeleBot(config.token)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    if db.getUserBrand(message.chat.id) is None:
+    if db.getUserBrand(message.chat.id) is not None:
         sent = bot.send_message(message.chat.id,"Выберите тип вопроса \n\n1. Поиск детали \n2. Вопрос по ремонту \n3. Обслуживание \n4. ТО")
         bot.register_next_step_handler(sent,reply2)
     else:
