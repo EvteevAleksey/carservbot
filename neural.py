@@ -21,8 +21,8 @@ class neural:
     def  data_init(self):
         corpus = []
         targ = []
-        if not os.path.exists("/model"):
-            print(os.curdir)
+        for i in os.listdir(os.curdir):
+            print(i)
         for i in os.listdir("app/model/repair"):
             with open("app/model/repair/" + i,'r') as fl:
                 corpus.append(fl.read())
