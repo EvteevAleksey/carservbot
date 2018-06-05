@@ -23,8 +23,6 @@ def createtables():
    #   CACHE 0;''')
    # connection.commit()
 
-    cursor.execute('''DROP TABLE chats''')
-
     cursor.execute('''
        CREATE TABLE IF NOT EXISTS chats
 (

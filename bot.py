@@ -3,6 +3,7 @@ import sys
 import DB
 import config
 import createdb
+import neural
 bot = telebot.TeleBot(config.token)
 
 
@@ -27,14 +28,17 @@ def reply1(message):
 
 
 def reply2(message):
-    bot.send_message(message.chat.id, '{name}. Заканчивай.'.format(name=message.text))
-
+    check = neur.check_cat(message.text)
+    sent = bot.send_message(message.chat.id, '{name}. Заканчивай.'.format(name=message.text))
+    bot.register_next_step_handler(sent,start)
 
 
 
 if __name__ == '__main__':
     createdb.createtables()
     db = DB.DBLayer(config.database)
+    neur = neural.neural()
+    neur.data_init()
     while True:
             try:
                 bot.polling(none_stop=True,interval=5)
