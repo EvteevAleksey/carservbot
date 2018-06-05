@@ -22,7 +22,7 @@ class neural:
         corpus = []
         targ = []
         if not os.path.exists("/model"):
-            print('error')
+            print(os.curdir)
         for i in os.listdir("app/model/repair"):
             with open("app/model/repair/" + i,'r') as fl:
                 corpus.append(fl.read())
