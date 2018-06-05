@@ -21,16 +21,16 @@ class neural:
     def  data_init(self):
         corpus = []
         targ = []
-        for i in os.listdir("C:/Users/Sony/Desktop/Ремонт"):
-            with open("C:/Users/Sony/Desktop/Ремонт/" + i,'r') as fl:
+        for i in os.listdir("/model/repair"):
+            with open("/model/repair/" + i,'r') as fl:
                 corpus.append(fl.read())
                 targ.append(0)
-        for i in os.listdir("C:/Users/Sony/Desktop/ТО"):
-            with open("C:/Users/Sony/Desktop/ТО/" + i,'r',encoding='utf-8') as fl:
+        for i in os.listdir("/model/service"):
+            with open("/model/service/" + i,'r',encoding='utf-8') as fl:
                 corpus.append(fl.read())
                 targ.append(1)
-        for i in os.listdir("C:/Users/Sony/Desktop/ТО1"):
-            with open("C:/Users/Sony/Desktop/ТО1/" + i,'r') as fl:
+        for i in os.listdir("/model/service1"):
+            with open("/model/service1/" + i,'r') as fl:
                 corpus.append(fl.read())
                 targ.append(1)
         newsgroups_train = train(corpus,targ)
